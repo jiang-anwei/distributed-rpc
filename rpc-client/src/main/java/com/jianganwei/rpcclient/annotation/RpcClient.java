@@ -1,5 +1,7 @@
 package com.jianganwei.rpcclient.annotation;
 
+import org.springframework.stereotype.Service;
+
 import java.lang.annotation.*;
 
 
@@ -8,6 +10,7 @@ import java.lang.annotation.*;
  */
 @Documented
 @Target(ElementType.TYPE)
+@Service
 @Retention(RetentionPolicy.RUNTIME)
 public @interface RpcClient {
 }

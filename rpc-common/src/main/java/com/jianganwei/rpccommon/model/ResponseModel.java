@@ -1,5 +1,6 @@
 package com.jianganwei.rpccommon.model;
 
+import com.jianganwei.rpccommon.RequestStatus;
 import lombok.Data;
 
 /**
@@ -10,6 +11,7 @@ import lombok.Data;
  */
 @Data
 public class ResponseModel {
-    String resultJSON;
+    Object result;
     String requestId;
+    RequestStatus status;
 }

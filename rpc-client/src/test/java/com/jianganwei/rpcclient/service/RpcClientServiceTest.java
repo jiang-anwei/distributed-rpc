@@ -1,8 +1,10 @@
 package com.jianganwei.rpcclient.service;
 
 import com.jianganwei.rpccommon.model.RequestModel;
+import org.I0Itec.zkclient.ZkClient;
 import org.apache.zookeeper.ZooKeeper;
 import org.checkerframework.checker.units.qual.A;
+import org.checkerframework.checker.units.qual.K;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,10 +22,10 @@ public class RpcClientServiceTest {
     @Autowired
     private RpcClientService rpcClientService;
     @Autowired
-    private ZooKeeper zooKeeper;
+    private ZkClient zkClient;
 
     @Test
-    public void test() throws Exception{
+    public void test() throws Exception {
         for (int i = 0; i < 5; i++) {
             RequestModel requestModel = new RequestModel();
             requestModel.setMethodName("test");
@@ -31,10 +33,9 @@ public class RpcClientServiceTest {
         }
         TimeUnit.SECONDS.sleep(500);
     }
-    @Test
-    public void test1()throws Exception{
 
-        System.out.println(new String(zooKeeper.getData("/node1",false,null)));
-        System.out.println(zooKeeper.getChildren("/",true));
+    @Test
+    public void test1() throws Exception {
+        System.out.println(zkClient.getChildren("/rpc"));
     }
 }

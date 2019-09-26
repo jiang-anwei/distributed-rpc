@@ -69,8 +69,5 @@ public class RpcServerService {
         }
     }
 
-    public static void main(String[] args) {
-        startServer(8085);
-    }
 }
 

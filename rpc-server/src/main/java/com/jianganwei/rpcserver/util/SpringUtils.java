@@ -1,4 +1,4 @@
-package com.jianganwei.rpcclient.util;
+package com.jianganwei.rpcserver.util;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
@@ -10,9 +10,8 @@ import org.springframework.stereotype.Component;
  * describe:
  *
  * @author jianganwei
- * @date 2019/08/26
+ * @date 2019/07/19
  */
-@Component
 public class SpringUtils implements ApplicationContextAware {
     private static ApplicationContext context;
     private static DefaultListableBeanFactory beanFactory;
@@ -23,15 +22,11 @@ public class SpringUtils implements ApplicationContextAware {
         beanFactory = (DefaultListableBeanFactory) context.getAutowireCapableBeanFactory();
     }
 
-    public <T> T getBean(Class<T> beanClass) {
+    public static <T> T getBean(Class<T> beanClass) {
         return context.getBean(beanClass);
-    }
-
-
-    public Object getBean(String name) {
+    } public static Object getBean(String name) {
         return context.getBean(name);
     }
-
     /**
      * 动态注入bean
      *
@@ -39,7 +34,7 @@ public class SpringUtils implements ApplicationContextAware {
      * @author ming
      * @date 2017-11-09 16:50
      */
-    public void registerBean(String beanName, Object object) {
+    public static void registerBean(String beanName, Object object) {
         //创建beanBuilder
         //注册bean
         beanFactory.registerSingleton(beanName, object);

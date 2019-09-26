@@ -18,33 +18,10 @@ import java.lang.reflect.Method;
  * @author jianganwei
  * @date 2019/08/26
  */
-public class ProxyHelper<T> implements MethodInterceptor, FactoryBean<T> {
-    private Class<T> tClass;
+public class ProxyHelper2 implements MethodInterceptor {
 
-    public ProxyHelper() {
-        System.out.println("12341111111111111111111111");
-    }
 
-    public void settClass(Class<T> tClass) {
-        this.tClass = tClass;
-    }
-
-    @Override
-    public boolean isSingleton() {
-        return true;
-    }
-
-    @Override
-    public T getObject() throws Exception {
-        return getInstance(tClass);
-    }
-
-    @Override
-    public Class<?> getObjectType() {
-        return tClass;
-    }
-
-    private T getInstance(Class<T> calzz) {
+    public  <T> T getInstance(Class<T> calzz) {
         Enhancer enhancer = new Enhancer();
         //设置目标代理类的父类为目标代理类
         enhancer.setSuperclass(calzz);

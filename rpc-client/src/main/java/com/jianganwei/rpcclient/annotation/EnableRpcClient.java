@@ -1,7 +1,11 @@
 package com.jianganwei.rpcclient.annotation;
 
+import com.jianganwei.rpcclient.proxy.ProxyHelper;
 import com.jianganwei.rpcclient.selector.RpcClientSelector;
 import com.jianganwei.rpcclient.service.ProxyService;
+import com.jianganwei.rpcclient.service.RpcClientService;
+import com.jianganwei.rpcclient.util.RemoteUtil;
+import com.jianganwei.rpccommon.config.ZookeeperConfig;
 import org.springframework.context.annotation.Import;
 
 import java.lang.annotation.*;
@@ -15,7 +19,8 @@ import java.lang.annotation.*;
 @Documented
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-@Import({RpcClientSelector.class})
+@Import({ZookeeperConfig.class, ProxyService.class, RpcClientSelector.class,
+        RpcClientService.class,  RemoteUtil.class})
 public @interface EnableRpcClient {
     /**
      * 需要扫描的包

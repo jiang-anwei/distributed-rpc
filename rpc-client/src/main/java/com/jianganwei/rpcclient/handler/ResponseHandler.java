@@ -17,7 +17,6 @@ import java.util.Map;
  */
 @Slf4j
 public class ResponseHandler extends SimpleChannelInboundHandler<ResponseModel> {
-    public static Map<String,String> map= Maps.newHashMap();
     @Override
     protected void channelRead0(ChannelHandlerContext channelHandlerContext, ResponseModel responseModel) throws Exception {
         ResultCollector.setResult(responseModel.getRequestId(), responseModel);
